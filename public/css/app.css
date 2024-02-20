@@ -1,0 +1,21 @@
+body {
+    background-color: rgb(14, 59, 104);
+}
+
+#emailHelp {
+    color: rgb(65, 65, 65);
+}
+
+input::placeholder {
+    color: rgb(0, 0, 0);
+  }
+
+.form-control {
+    border-color: black;
+    background-color: rgb(66, 66, 66);
+    color: rgb(0, 0, 0);
+}
+
+form {
+    color: rgb(139 139 139);
+}
