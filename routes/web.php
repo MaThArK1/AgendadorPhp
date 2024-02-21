@@ -26,7 +26,11 @@ Route::prefix('user')->group(function() {
 Route::prefix('login')->group(function() {
     Route::get('/', [LoginController::class, 'index'])->name('login-index');
 
-    Route:: post('/', [LoginController::class, 'authenticate'])->name('login-store');
+    Route::post('/', function () {
+        $email = request('email');
+        $password = request('password');
+        return app()->make(LoginController::class)->callAction('authenticate', compact('email', 'password'));
+    })->name('login-store');
 
     Route::get('/destroy', [LoginController::class, 'destroy'])->name('login-destroy');
 });

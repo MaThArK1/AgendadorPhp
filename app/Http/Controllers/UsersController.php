@@ -27,7 +27,7 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         User::create($request->all());
-        return redirect()->route('users-index');
+        return redirect()->route('login-index');
     }
 
     /**
