@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClientsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Route::get('/', [LoginController::class, 'index'])->name('login-index');
 
 Route::prefix('user')->group(function() {
 
@@ -24,7 +25,6 @@ Route::prefix('user')->group(function() {
 });
 
 Route::prefix('login')->group(function() {
-    Route::get('/', [LoginController::class, 'index'])->name('login-index');
 
     Route::post('/', function () {
         $email = request('email');
@@ -33,6 +33,14 @@ Route::prefix('login')->group(function() {
     })->name('login-store');
 
     Route::get('/destroy', [LoginController::class, 'destroy'])->name('login-destroy');
+});
+
+Route::prefix('admin')->group(function() {
+    Route::get('/',  [ClientsController::class, 'index'])->name('home-page');
+
+    Route::get('/clients', [ClientsController::class, 'create'])->name('clients-create');
+
+    Route::post('/', [ClientsController::class, 'store'])->name('clients-store');
 });
 
 Route::fallback(function() {

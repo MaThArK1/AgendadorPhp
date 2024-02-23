@@ -31,7 +31,7 @@ class LoginController extends Controller
             return redirect()->route('login-index')->withErrors(['error' => 'Invalid email or password']);
         }
     
-        return redirect()->route('login-index')->with('success', 'Logged in');
+        return redirect()->route('home-page')->with('success', 'Logged in');
     }
 
     public function destroy()
